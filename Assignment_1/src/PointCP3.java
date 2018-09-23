@@ -46,8 +46,8 @@ public class PointCP3
     if(type != 'C' && type != 'P')
       throw new IllegalArgumentException();
     if(type == 'P') {
-    	this.xOrRho = Math.cos(Math.toRadians(yOrTheta));
-    	this.yOrTheta = Math.sin(Math.toRadians(yOrTheta));
+    	this.xOrRho = (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
+    	this.yOrTheta = (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
     }
     else if (type == 'C') {
     	this.xOrRho = xOrRho;
