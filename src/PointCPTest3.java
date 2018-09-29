@@ -63,9 +63,9 @@ public class PointCPTest3
         return;
       }
     }
-    System.out.println("\nYou entered:\n" + point);
-    System.out.println("\nAfter asking to store as Polar:\n" + "[" + point.getRho() + "," + point.getTheta() + "]");     
-    System.out.println("\nAfter Computing as Cartesian:\n" + point.convertStorageToPolar());
+    
+    System.out.println("\nstored as Cartesian:\n" + point);     
+    System.out.println("\nComputed as Polar:\n" + point.convertStorageToPolar());
     //point.convertStorageToPolar();
     // point.convertStorageToCartesian();
   }
