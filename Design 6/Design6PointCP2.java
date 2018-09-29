@@ -12,7 +12,7 @@
  * @author Dr Timothy C. Lethbridge
  * @version July 2000
  */
-public class PointCP3
+public class Design6PointCP2 implements Design6
 {
   //Instance variables ************************************************
 
@@ -20,7 +20,7 @@ public class PointCP3
    * Contains C(artesian) or P(olar) to identify the type of
    * coordinates that are being dealt with.
    */
-  //private char typeCoord = 'C';
+  //private char typeCoord = 'P';
   
   /**
    * Contains the current value of X or RHO depending on the type
@@ -40,19 +40,20 @@ public class PointCP3
   /**
    * Constructs a coordinate object, with a type identifier.
    */
-  public PointCP3(char type, double xOrRho, double yOrTheta)
+  public Design6PointCP2(char type, double xOrRho, double yOrTheta)
   {
 	
     if(type != 'C' && type != 'P')
       throw new IllegalArgumentException();
     if(type == 'P') {
-    	this.xOrRho = (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
-    	this.yOrTheta = (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
-    }
-    else if (type == 'C') {
     	this.xOrRho = xOrRho;
     	this.yOrTheta = yOrTheta;
     }
+    else if (type == 'C') {
+    	this.xOrRho = (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
+    	this.yOrTheta = (Math.toDegrees(Math.atan2(yOrTheta, xOrRho)));
+    }
+   
   }
 	
   
@@ -61,42 +62,33 @@ public class PointCP3
  
   public double getX()
   {
-      return xOrRho;
+	  return (Math.cos(Math.toRadians(yOrTheta)) * xOrRho);
   }
   
   public double getY()
   {
-      return yOrTheta;
+	  return (Math.sin(Math.toRadians(yOrTheta)) * xOrRho);
   }
   
   public double getRho()
-  {
-      return (Math.sqrt(Math.pow(xOrRho, 2) + Math.pow(yOrTheta, 2)));
+  {    
+      return xOrRho; 
   }
   
   public double getTheta()
-  {
-      return (Math.toDegrees(Math.atan2(yOrTheta, xOrRho)));
+  {    
+      return yOrTheta;
   }
   
 	
   /**
-   * Converts Cartesian coordinates to Polar coordinates.
+   * Converts Cartesian coordinates to Polar Cartesian coordinates.
    */
-  public PointCP2 convertStorageToPolar()
-   
-  {
-    PointCP2 temp = new PointCP2('P',getRho(),getTheta());
-    return temp;
+  public Design6PointCP3 convert() {
+	  Design6PointCP3 temp = new Design6PointCP3('P',getRho(),getTheta());
+	  return temp;
   }
   
-	
-  /**
-   * Converts Polar coordinates to Cartesian coordinates.
-   */
-  public void convertStorageToCartesian()
-  {
-  }
 
   /**
    * Calculates the distance in between two points using the Pythagorean
@@ -106,12 +98,12 @@ public class PointCP3
    * @param pointB The second point.
    * @return The distance between the two points.
    */
-  public double getDistance(PointCP3 pointB)
+  public double getDistance(Object pointB)
   {
     // Obtain differences in X and Y, sign is not important as these values
     // will be squared later.
-    double deltaX = getX() - pointB.getX();
-    double deltaY = getY() - pointB.getY();
+    double deltaX = getX() - ((Design6PointCP2) pointB).getX();
+    double deltaY = getY() - ((Design6PointCP2) pointB).getY();
     
     return Math.sqrt((Math.pow(deltaX, 2) + Math.pow(deltaY, 2)));
   }
@@ -124,13 +116,13 @@ public class PointCP3
    * @param rotation The number of degrees to rotate the point.
    * @return The rotated image of the original point.
    */
-  public PointCP3 rotatePoint(double rotation)
+  public Design6PointCP2 rotatePoint(double rotation)
   {
     double radRotation = Math.toRadians(rotation);
     double X = getX();
     double Y = getY();
         
-    return new PointCP3('C',
+    return new Design6PointCP2('C',
       (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
       (Math.sin(radRotation) * X) + (Math.cos(radRotation) * Y));
   }
@@ -142,6 +134,7 @@ public class PointCP3
    */
   public String toString()
   {
-    return "(" + getX() + "," + getY() + ")" + "\n";
+    return "[" + getRho() + "," + getTheta() + "]" + "\n";
   }
+  
 }

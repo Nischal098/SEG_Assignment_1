@@ -4,7 +4,7 @@ public interface Design6{
 	public abstract double getRho();
 	public abstract double getTheta();
 	public abstract Object convert();
-	public abstract double getDistance();
-	public abstract PointCP rotatePoint(double x);
+	public abstract double getDistance(Object point);
+	public abstract Object rotatePoint(double rotation);
 	public abstract String toString();
 }

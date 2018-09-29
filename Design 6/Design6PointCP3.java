@@ -12,7 +12,7 @@
  * @author Dr Timothy C. Lethbridge
  * @version July 2000
  */
-public class PointCP3
+public class Design6PointCP3 implements Design6
 {
   //Instance variables ************************************************
 
@@ -40,7 +40,7 @@ public class PointCP3
   /**
    * Constructs a coordinate object, with a type identifier.
    */
-  public PointCP3(char type, double xOrRho, double yOrTheta)
+  public Design6PointCP3(char type, double xOrRho, double yOrTheta)
   {
 	
     if(type != 'C' && type != 'P')
@@ -83,20 +83,12 @@ public class PointCP3
   /**
    * Converts Cartesian coordinates to Polar coordinates.
    */
-  public PointCP2 convertStorageToPolar()
-   
+  public Object convert()   
   {
-    PointCP2 temp = new PointCP2('P',getRho(),getTheta());
+    Design6PointCP2 temp = new Design6PointCP2('P',getRho(),getTheta());
     return temp;
   }
-  
-	
-  /**
-   * Converts Polar coordinates to Cartesian coordinates.
-   */
-  public void convertStorageToCartesian()
-  {
-  }
+
 
   /**
    * Calculates the distance in between two points using the Pythagorean
@@ -106,12 +98,12 @@ public class PointCP3
    * @param pointB The second point.
    * @return The distance between the two points.
    */
-  public double getDistance(PointCP3 pointB)
+  public double getDistance(Object pointB)
   {
     // Obtain differences in X and Y, sign is not important as these values
     // will be squared later.
-    double deltaX = getX() - pointB.getX();
-    double deltaY = getY() - pointB.getY();
+    double deltaX = getX() - ((Design6PointCP3) pointB).getX();
+    double deltaY = getY() - ((Design6PointCP3) pointB).getY();
     
     return Math.sqrt((Math.pow(deltaX, 2) + Math.pow(deltaY, 2)));
   }
@@ -124,13 +116,13 @@ public class PointCP3
    * @param rotation The number of degrees to rotate the point.
    * @return The rotated image of the original point.
    */
-  public PointCP3 rotatePoint(double rotation)
+  public Design6PointCP3 rotatePoint(double rotation)
   {
     double radRotation = Math.toRadians(rotation);
     double X = getX();
     double Y = getY();
         
-    return new PointCP3('C',
+    return new Design6PointCP3('C',
       (Math.cos(radRotation) * X) - (Math.sin(radRotation) * Y),
       (Math.sin(radRotation) * X) + (Math.cos(radRotation) * Y));
   }

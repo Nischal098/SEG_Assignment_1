@@ -106,7 +106,7 @@ public class PointCP2
    * @param pointB The second point.
    * @return The distance between the two points.
    */
-  public double getDistance(PointCP3 pointB)
+  public double getDistance(PointCP2 pointB)
   {
     // Obtain differences in X and Y, sign is not important as these values
     // will be squared later.
