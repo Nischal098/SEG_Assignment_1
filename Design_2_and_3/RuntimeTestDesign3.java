@@ -1,30 +1,32 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.Random;
 
-public class RuntimeTest{
+public class RuntimeTestDesign3{
 	
-	public static PointCP2 pointDesign2;
+	public static PointCP3 pointDesign2;
 	
 	public static void main(String[] args) {		
 		long[] runs = new long[5];	
-		System.out.println("Running 5 loops of 100000000 calls for each method\n");
+		System.out.println("Running 5 loops of 10000000 calls for each method\n");
 		
-		for(int methodRun = 1; methodRun <= 9; methodRun++) {
+		for(int methodRun = 1; methodRun < 9; methodRun++) {
 			for(int i = 0; i < 5; i++) {
 				runs[i] = Runtime(methodRun);
 			}	
 			Arrays.sort(runs);
-			System.out.println("\nTime for Method number" + methodRun + "   Min:" + runs[0]/1000000000 + " Max:" + runs[4]/1000000000 +
-					" Median:" + runs[2]/1000000000);
+			System.out.println("\nTime for Method number" + methodRun + "   Min:" + runs[0]/1000000 + " Max:" + runs[4]/1000000 +
+					" Median:" + runs[2]/1000000);
 		}		
 	}
+	
 	
 	public static long Runtime(int methodNumber) {
 		long start,end;
 		Random rand = new Random();
-		pointDesign2 = new PointCP2('P',rand.nextInt(1000),rand.nextInt(1000));
+		pointDesign2 = new PointCP3('P',rand.nextInt(1000),rand.nextInt(1000));
 		
 		start = System.nanoTime();
-		for(int i = 0; i < 100000000; i++) {
+		for(int i = 0; i < 10000000; i++) {
 			switch (methodNumber){
 				case 1:
 					pointDesign2.getX();
@@ -39,7 +41,7 @@ public class RuntimeTest{
 				case 6:
 					pointDesign2.convertStorageToCartesian();
 				case 7:
-					pointDesign2. getDistance(new PointCP2('P',rand.nextInt(1000),rand.nextInt(1000)));
+					pointDesign2. getDistance(new PointCP3('P',rand.nextInt(1000),rand.nextInt(1000)));
 				case 8:
 					pointDesign2. rotatePoint(rand.nextInt(200));				
 			}
