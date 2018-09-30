@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="Design_2_and_3"/>
 	<classpathentry kind="src" path="Design 6"/>
+	<classpathentry kind="src" path="Part B"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
