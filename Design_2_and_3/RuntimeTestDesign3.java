@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class RuntimeTestDesign3{
 	
-	public static PointCP3 pointDesign2;
+	public static PointCP3 pointDesign3;
 	
 	public static void main(String[] args) {		
 		long[] runs = new long[5];	
@@ -19,31 +19,30 @@ public class RuntimeTestDesign3{
 		}		
 	}
 	
-	
 	public static long Runtime(int methodNumber) {
 		long start,end;
 		Random rand = new Random();
-		pointDesign2 = new PointCP3('P',rand.nextInt(1000),rand.nextInt(1000));
+		pointDesign3 = new PointCP3('C',rand.nextInt(1000),rand.nextInt(1000));
 		
 		start = System.nanoTime();
 		for(int i = 0; i < 10000000; i++) {
 			switch (methodNumber){
 				case 1:
-					pointDesign2.getX();
+					pointDesign3.getX();
 				case 2:
-					pointDesign2.getY();
+					pointDesign3.getY();
 				case 3:
-					pointDesign2.getRho();
+					pointDesign3.getRho();
 				case 4:
-					pointDesign2.getTheta();
+					pointDesign3.getTheta();
 				case 5:
-					pointDesign2.convertStorageToPolar();
+					pointDesign3.convertStorageToPolar();
 				case 6:
-					pointDesign2.convertStorageToCartesian();
+					pointDesign3.convertStorageToCartesian();
 				case 7:
-					pointDesign2. getDistance(new PointCP3('P',rand.nextInt(1000),rand.nextInt(1000)));
+					pointDesign3. getDistance(new PointCP3('P',rand.nextInt(1000),rand.nextInt(1000)));
 				case 8:
-					pointDesign2. rotatePoint(rand.nextInt(200));				
+					pointDesign3. rotatePoint(rand.nextInt(200));				
 			}
 		}
 		end = System.nanoTime();
