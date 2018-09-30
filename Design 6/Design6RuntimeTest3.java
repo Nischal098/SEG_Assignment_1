@@ -38,7 +38,7 @@ public class Design6RuntimeTest3{
 				case 5:
 					pointDesign3.convert();
 				case 6:
-					pointDesign3.getDistance(new Design6PointCP2('P',rand.nextInt(1000),rand.nextInt(1000)));
+					pointDesign3.getDistance(new Design6PointCP3('C',rand.nextInt(1000),rand.nextInt(1000)));
 				case 7:
 					pointDesign3.rotatePoint(rand.nextInt(200));				
 			}
