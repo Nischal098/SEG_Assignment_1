@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.*;
 
 public class arraylist {	
@@ -8,14 +7,16 @@ public class arraylist {
 		double time = System.nanoTime();
 		long sum = 0;
 
-		for (long i = 0; i<200000000; i++) {
+		for (long i = 0; i<165000000; i++) {
 			list.add(rand.nextInt(10));
 		}		
-		for(long obj : list) {
-			sum = sum + obj;
+		for (int i = 0; i<165000000; i++) {
+			sum += (int)(list.get(i));
 		}
-		System.out.println("Running for 200000000 executions:");
-		System.out.println("\nTime taken = " + (System.nanoTime() - time)/1000000000);
+		
+		time = System.nanoTime() - time;
+		System.out.println("Running for 165000000 executions:");
+		System.out.println("\nTime taken = " + time/1000000000);
 		System.out.println("Sum = " + sum);
 	}	
 }

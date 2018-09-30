@@ -2,7 +2,7 @@ import java.util.*;
 
 public class arraylist_iterator{
 	public static void main(String[] args){
-		ArrayList<Integer> list = new ArrayList<Integer>(165000000);
+		ArrayList<Integer> list = new ArrayList<Integer>();
 		Random rand = new Random();
 		double time = System.nanoTime();
 		long sum = 0;
@@ -15,6 +15,7 @@ public class arraylist_iterator{
 		while (iterator.hasNext()) {
 			sum = sum + iterator.next();
 		}
+		
 		time = System.nanoTime() - time;
 		System.out.println("Running for 165000000 executions:");
 		System.out.println("\nTime taken = " + time/1000000000);
