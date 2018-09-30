@@ -94,7 +94,7 @@ public class PointCP2
    */
   public PointCP3 convertStorageToCartesian()
   {
-	  PointCP3 temp = new PointCP3('P',getRho(),getTheta());
+	  PointCP3 temp = new PointCP3('C',getX(),getY());
 	  return temp;
   }
 

@@ -85,7 +85,7 @@ public class Design6PointCP2 implements Design6
    * Converts Cartesian coordinates to Polar Cartesian coordinates.
    */
   public Design6PointCP3 convert() {
-	  Design6PointCP3 temp = new Design6PointCP3('P',getRho(),getTheta());
+	  Design6PointCP3 temp = new Design6PointCP3('C',getX(),getY());
 	  return temp;
   }
   
