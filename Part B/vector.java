@@ -15,9 +15,8 @@ public class vector {
 		for (int i = 0; i<200000000; i++) {
 			sum += (int)(vec.get(i));
 		}		
-
-		time = System.nanoTime() - time;
+		System.out.println("Running for 200000000 executions:");
+		System.out.println("\nTime taken = " + (System.nanoTime() - time)/1000000000);
 		System.out.println("Sum = " + sum);
-		System.out.println("Time taken = " + time/1000000000);
 	}	
 }

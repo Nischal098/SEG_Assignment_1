@@ -6,15 +6,16 @@ public class arraylist {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		Random rand = new Random();
 		double time = System.nanoTime();
-		int sum = 0;
+		long sum = 0;
 
-		for (int i = 0; i<200000000; i++) {
+		for (long i = 0; i<200000000; i++) {
 			list.add(rand.nextInt(10));
 		}		
-		for(int obj : list) {
+		for(long obj : list) {
 			sum = sum + obj;
 		}
+		System.out.println("Running for 200000000 executions:");
+		System.out.println("\nTime taken = " + (System.nanoTime() - time)/1000000000);
 		System.out.println("Sum = " + sum);
-		System.out.println("Time taken = " + (System.nanoTime() - time)/1000000000);
 	}	
 }
